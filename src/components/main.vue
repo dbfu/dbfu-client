@@ -95,9 +95,7 @@ export default {
 }
 .content {
   flex: 1;
-  overflow: auto;
   background-color: #ecf0f5;
-  padding: 8px 12px;
   padding-bottom: 0px;
   position: relative;
   z-index: 999;

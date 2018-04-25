@@ -9,10 +9,10 @@
               <!-- <span>系统组件</span> -->
               <el-row style="padding: 10px; padding-bottom: 0;">
                 <el-col :span="12">
-                  <div droppabled="true" data-type="el-row" data-style='{"minHeight":"200px"}' v-draggable class="list-item">row</div>
+                  <div droppabled="true" data-type="el-row" data-class='showHeight' v-draggable class="list-item">row</div>
                 </el-col>
                 <el-col :span="12">
-                  <div droppabled="true" data-type="el-col" data-props='{"span":8}' data-style='{"minHeight":"200px"}' v-draggable class="list-item">col</div>
+                  <div droppabled="true" data-type="el-col" data-props='{"span":8}' data-class='showHeight' v-draggable class="list-item">col</div>
                 </el-col>
                 <el-col :span="12">
                   <div droppabled="true" data-type="el-button" v-draggable data-text="按钮" class="list-item">button</div>
@@ -24,10 +24,10 @@
                   <div droppabled="true" data-type="Input" v-draggable class="list-item">input</div>
                 </el-col>
                 <el-col :span="12">
-                  <div droppabled="true" data-type="el-form" v-draggable data-style='{"minHeight":"200px"}' class="list-item">form</div>
+                  <div droppabled="true" data-type="el-form" v-draggable data-class='showHeight' class="list-item">form</div>
                 </el-col>
                 <el-col :span="12">
-                  <div droppabled="true" data-type="el-form-item" v-draggable class="list-item">form-item</div>
+                  <div data-class='showHeight' droppabled="true" data-type="el-form-item" v-draggable class="list-item">form-item</div>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -69,6 +69,7 @@
       <div class="button-box">
         <el-button size="small" @click="save" type="primary">保存</el-button>
         <el-button size="small" style="margin-left: 16px;">返回</el-button>
+        <el-button size="small" @click="preview" style="margin-left: 16px;">预览</el-button>
       </div>
     </div>
   </div>
@@ -78,7 +79,6 @@
 import view from "../common/view";
 import grid from "../common/grid";
 import attr from "./attr";
-
 export default {
   name: "page2",
   components: {
@@ -88,7 +88,7 @@ export default {
   },
   data() {
     return {
-      viewList: [],
+      // viewList: [],
       selected: {},
       value1: "1",
       expandeds: []
@@ -97,6 +97,9 @@ export default {
   computed: {
     isSelect() {
       return JSON.stringify(this.selected) !== "{}";
+    },
+    viewList() {
+      return this.$store.state.viewList;
     }
   },
   methods: {
@@ -112,16 +115,15 @@ export default {
     },
     drop(e, ui, self) {
       let type = $(ui.draggable).attr("data-type");
-      let style = $(ui.draggable).attr("data-style");
+      let className = $(ui.draggable).attr("data-class");
       let id = $(self).attr("id");
       let text = $(ui.draggable).attr("data-text");
       let props = $(ui.draggable).attr("data-props");
-      console.log($(ui.draggable).attr("droppabled"));
 
-      if (style) {
-        style = JSON.parse(style);
+      if (className) {
+        className = { [className]: true };
       } else {
-        style = {};
+        className = {};
       }
 
       if (props) {
@@ -134,9 +136,9 @@ export default {
         type,
         parent: view.index,
         props,
-        style,
+        style: {},
         attrs: {},
-        className: {},
+        className: className,
         text: text,
         children: [],
         expand: true,
@@ -188,7 +190,8 @@ export default {
         v.index = length;
         v.nodeKey = length;
         this.expandeds.push(length);
-        this.viewList.push(v);
+        this.$store.commit("addView", v);
+        //this.viewList.push(v);
       }
     },
     save() {},
@@ -234,6 +237,9 @@ export default {
       }
 
       return view;
+    },
+    preview() {
+      this.$router.push({ path: "/main/preview" });
     }
   }
 };
@@ -311,5 +317,8 @@ export default {
 }
 .contanier .el-form-item {
   margin-bottom: 8px;
+}
+.showHeight {
+  min-height: 200px;
 }
 </style>

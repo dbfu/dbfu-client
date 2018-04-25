@@ -11,6 +11,7 @@ import './plugins/loading.css'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import index from './index'
+import store from '../src/components/store'
 
 Vue.use(ElementUI)
 Vue.use(iView)
@@ -34,6 +35,7 @@ Vue.component("my-table", Table)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

@@ -8,6 +8,7 @@ import DataSourceAdd from '@/components/data-source/add'
 
 import MenuList from '@/components/menu/list'
 import Component from '@/components/component/component'
+import Preview from '@/components/preview/preview'
 
 Vue.use(Router)
 
@@ -48,7 +49,11 @@ export default new Router({
         {
           path: "component",
           component: Component
-        }
+        },
+        {
+          path: "preview",
+          component: Preview
+        },
       ]
     }
   ]
