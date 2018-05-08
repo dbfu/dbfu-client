@@ -1,5 +1,6 @@
 
-import iForm from "./components/common/i-form"
+import myForm from "./components/common/my-form"
+import myFormItem from "./components/common/form-item"
 import searchForm from "./components/common/search-form"
 import grid from "./components/common/grid"
 import tip from "./components/common/tip"
@@ -10,10 +11,13 @@ import slide from "./components/common/slide"
 import formAttr from "./components/common/form-attr"
 import formItemAttr from "./components/common/form-item-attr"
 
+import dMyForm from "./components/template/my-form"
+
 let Index = {}
 
 Index.install = function (Vue, options) {
-    Vue.component("i-form", iForm);
+    Vue.component("my-form", myForm);
+    Vue.component("my-form-item", myFormItem);
     Vue.component("search-form", searchForm);
     Vue.component("grid", grid);
     Vue.component("tip", tip);
@@ -21,8 +25,11 @@ Index.install = function (Vue, options) {
     Vue.component("el-col-attr", colAttr);
     Vue.component("el-button-attr", buttonAttr);
     Vue.component("slide", slide);
-    Vue.component("el-form-attr", formAttr);
-    Vue.component("el-form-item-attr", formItemAttr);
+    Vue.component("my-form-attr", formAttr);
+    Vue.component("my-form-item-attr", formItemAttr);
+    
+    Vue.component("d-my-form", dMyForm);
+
     
     Vue.directive("draggable", {
         bind: function (el, binding, vnode) {

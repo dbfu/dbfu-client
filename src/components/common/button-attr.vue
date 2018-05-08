@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="selected.props" label-position="top">
+  <el-form :model="selected.props" size="mini" label-position="top">
     <el-form-item label="名称">
       <h3>{{selected.type}}</h3>
     </el-form-item>

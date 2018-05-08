@@ -9,7 +9,6 @@ const store = new Vuex.Store({
     },
     mutations: {
         addView(state, view) {
-            console.log(view);
             state.viewList.push(view);
         }
     },

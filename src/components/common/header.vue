@@ -52,7 +52,6 @@ header .left-section {
   box-shadow: -5px 10px 10px #000;
   position: relative;
   z-index: 99;
-  transition: all 0.3 linear;
 }
 header .left-section-expand {
   width: 200px;

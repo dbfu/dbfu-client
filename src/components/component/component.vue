@@ -21,10 +21,10 @@
                   <div droppabled="true" data-type="label" v-draggable data-text="label" class="list-item">label</div>
                 </el-col>
                 <el-col :span="12">
-                  <div droppabled="true" data-type="Input" v-draggable class="list-item">input</div>
+                  <div droppabled="true" data-type="el-input" v-draggable class="list-item">input</div>
                 </el-col>
                 <el-col :span="12">
-                  <div droppabled="true" data-type="el-form" v-draggable data-class='showHeight' class="list-item">form</div>
+                  <div data-type="my-form" v-draggable data-class='showHeight' class="list-item">form</div>
                 </el-col>
                 <el-col :span="12">
                   <div data-class='showHeight' droppabled="true" data-type="el-form-item" v-draggable class="list-item">form-item</div>
@@ -52,11 +52,11 @@
         </el-card>
       </el-col>
       <el-col style="height: 100%" :span="5">
-        <el-card style="height: 50%" class="card-box">
+        <el-card style="height: 60%" class="card-box">
           <span style="font-size: 14px;font-weight:600" slot="header">属性</span>
           <attr :selected="selected" v-if="isSelect"></attr>
         </el-card>
-        <el-card style="height: 50%" class="card-box">
+        <el-card style="height: 40%" class="card-box">
           <div slot="header">
             <span style="font-size: 14px;font-weight:600">页面布局</span>
             <el-button @click="remove" v-if="isSelect" style="float: right; padding: 3px 0;" type="text">删除</el-button>

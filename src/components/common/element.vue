@@ -26,7 +26,7 @@ export default {
       }
 
       return h(
-        params.type,
+        "d-" + params.type,
         {
           props: params.props,
           class: params.className,

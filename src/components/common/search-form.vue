@@ -1,8 +1,6 @@
 <template>
   <div v-droppable="drop" class="form-box">
-    <el-form>
-      
-    </el-form>
+    <el-form></el-form>
   </div>
 </template>
 
@@ -20,24 +18,7 @@ export default {
   data() {
     return {
       model: {},
-      list: [
-        {
-          type: "text",
-          key: "name",
-          title: "名称",
-          defaultValue: "13443"
-        },
-        {
-          type: "text",
-          key: "name",
-          title: "名称"
-        },
-        {
-          type: "text",
-          key: "name",
-          title: "名称"
-        }
-      ]
+      list: []
     };
   },
   methods: {
@@ -48,13 +29,7 @@ export default {
       this.$refs.form.reset();
     },
     drop(e, ui, self) {
-      let id = $(self).attr("id");
-      let v = this.viewList[id];
-      let item = {
-        type: "el-form-item",
-        children: [{ type: "el-input" }]
-      };
-      v.children.push(item);
+
     }
   }
 };
